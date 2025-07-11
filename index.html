@@ -10,31 +10,22 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+    }
     body {
       font-family: 'Poppins', sans-serif;
       background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
     }
-    .dark {
-      background-color: #111827;
-      color: #f9fafb;
-    }
-    .dark header,
-    .dark footer,
-    .dark .bg-white,
-    .dark .text-green-900 {
-      background-color: #1f2937 !important;
-      color: #f9fafb !important;
-    }
-    .dark .text-gray-700 { color: #d1d5db !important; }
-    .zoom-hover:hover { transform: scale(1.05); transition: transform 0.3s ease; }
     .animate-fade-in { animation: fadeIn 1s ease-out forwards; opacity: 0; }
     .animate-slide-in { animation: slideIn 1s ease-out forwards; opacity: 0; }
     @keyframes fadeIn { to { opacity: 1; } }
     @keyframes slideIn { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+    .zoom-hover:hover { transform: scale(1.1); transition: transform 0.3s ease; }
+    .dark body { background-color: #111827; color: #f9fafb; }
   </style>
 </head>
-<body class="bg-lime-50 text-green-900" id="mainBody">
+<body class="bg-lime-50 text-green-900">
 
   <!-- Preloader -->
   <div id="preloader" class="fixed inset-0 bg-white flex items-center justify-center z-50">
@@ -48,7 +39,7 @@
 
   <!-- Dark Mode & Language Switcher -->
   <div class="fixed top-4 right-4 flex gap-3 z-50">
-    <button onclick="toggleDarkMode()" class="bg-gray-800 text-white px-2 py-1 rounded">🌙</button>
+    <button onclick="document.body.classList.toggle('dark')" class="bg-gray-800 text-white px-2 py-1 rounded">🌙</button>
     <button onclick="toggleLang()" class="bg-green-700 text-white px-2 py-1 rounded">🇮🇳 हिंदी</button>
   </div>
 
@@ -58,7 +49,11 @@
       <img src="images/logo.png" alt="Logo" class="rounded-full w-12 h-12 object-cover">
       <h1 class="text-xl font-bold">Vatsalya Organik</h1>
     </div>
+    <a href="https://wa.me/917500993392" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition">WhatsApp</a>
   </header>
+
+  <!-- Seasonal Banner -->
+  <div class="bg-yellow-300 text-center py-2 font-semibold">🎉 Festive Offer: 10% Off on Combo Packs – Limited Time!</div>
 
   <!-- Hero -->
   <section class="text-center py-20 bg-gradient-to-br from-lime-100 to-yellow-100 px-4 bg-fixed">
@@ -74,112 +69,91 @@
 
   <!-- Trust Badges -->
   <section class="flex justify-center flex-wrap gap-4 py-4">
-    <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-semibold" data-lang-en>✅ Farm Fresh</span>
-    <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-semibold hidden" data-lang-hi>✅ ताज़ा खेत से</span>
-
-    <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-semibold" data-lang-en>🌿 No Chemicals</span>
-    <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-semibold hidden" data-lang-hi>🌿 रसायन रहित</span>
-
-    <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-semibold" data-lang-en>🔍 Hand Inspected</span>
-    <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-semibold hidden" data-lang-hi>🔍 हाथ से जांचा हुआ</span>
-
-    <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-semibold" data-lang-en>📦 Eco Packaging</span>
-    <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-semibold hidden" data-lang-hi>📦 इको पैकिंग</span>
+    <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-semibold">✅ Farm Fresh</span>
+    <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-semibold">🌿 No Chemicals</span>
+    <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-semibold">🔍 Hand Inspected</span>
+    <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-semibold">📦 Eco Packaging</span>
   </section>
 
   <!-- Products -->
   <section class="py-12 px-6">
-    <h3 class="text-3xl font-semibold text-center mb-10" data-lang-en>Our Products</h3>
-    <h3 class="text-3xl font-semibold text-center mb-10 hidden" data-lang-hi>हमारे उत्पाद</h3>
+    <h3 class="text-3xl font-semibold text-center mb-10">Our Products</h3>
     <div class="grid gap-6 grid-cols-2 sm:grid-cols-3 md:grid-cols-4">
-      <div class="bg-white rounded-xl shadow p-4 text-center hover:shadow-lg transition zoom-hover">
-        <img src="images/spices.png" alt="Spices" class="mb-2 mx-auto rounded h-28 w-auto object-contain">
-        <p class="font-semibold" data-lang-en>Spices</p>
-        <p class="font-semibold hidden" data-lang-hi>मसाले</p>
+      <div class="bg-white rounded-2xl shadow-xl p-4 text-center transform hover:scale-105 hover:shadow-2xl transition duration-300 zoom-hover">
+        <img src="images/spices.png" alt="Spices" class="mb-3 mx-auto rounded-xl h-28 w-auto object-contain">
+        <p class="font-semibold text-lg text-green-900">Spices</p>
       </div>
-      <div class="bg-white rounded-xl shadow p-4 text-center hover:shadow-lg transition zoom-hover">
-        <img src="images/pulses.png" alt="Pulses" class="mb-2 mx-auto rounded h-28 w-auto object-contain">
-        <p class="font-semibold" data-lang-en>Pulses</p>
-        <p class="font-semibold hidden" data-lang-hi>दालें</p>
+      <div class="bg-white rounded-2xl shadow-xl p-4 text-center transform hover:scale-105 hover:shadow-2xl transition duration-300 zoom-hover">
+        <img src="images/pulses.png" alt="Pulses" class="mb-3 mx-auto rounded-xl h-28 w-auto object-contain">
+        <p class="font-semibold text-lg text-green-900">Pulses</p>
       </div>
-      <div class="bg-white rounded-xl shadow p-4 text-center hover:shadow-lg transition zoom-hover">
-        <img src="images/cereals.png" alt="Cereals" class="mb-2 mx-auto rounded h-28 w-auto object-contain">
-        <p class="font-semibold" data-lang-en>Cereals</p>
-        <p class="font-semibold hidden" data-lang-hi>अनाज</p>
+      <div class="bg-white rounded-2xl shadow-xl p-4 text-center transform hover:scale-105 hover:shadow-2xl transition duration-300 zoom-hover">
+        <img src="images/cereals.png" alt="Cereals" class="mb-3 mx-auto rounded-xl h-28 w-auto object-contain">
+        <p class="font-semibold text-lg text-green-900">Cereals</p>
       </div>
-      <div class="bg-white rounded-xl shadow p-4 text-center hover:shadow-lg transition zoom-hover">
-        <img src="images/millets.png" alt="Millets" class="mb-2 mx-auto rounded h-28 w-auto object-contain">
-        <p class="font-semibold" data-lang-en>Millets</p>
-        <p class="font-semibold hidden" data-lang-hi>मोटा अनाज</p>
+      <div class="bg-white rounded-2xl shadow-xl p-4 text-center transform hover:scale-105 hover:shadow-2xl transition duration-300 zoom-hover">
+        <img src="images/millets.png" alt="Millets" class="mb-3 mx-auto rounded-xl h-28 w-auto object-contain">
+        <p class="font-semibold text-lg text-green-900">Millets</p>
       </div>
-      <div class="bg-white rounded-xl shadow p-4 text-center hover:shadow-lg transition zoom-hover">
-        <img src="images/oils.png" alt="Oils" class="mb-2 mx-auto rounded h-28 w-auto object-contain">
-        <p class="font-semibold" data-lang-en>Oils</p>
-        <p class="font-semibold hidden" data-lang-hi>तेल</p>
+      <div class="bg-white rounded-2xl shadow-xl p-4 text-center transform hover:scale-105 hover:shadow-2xl transition duration-300 zoom-hover">
+        <img src="images/oils.png" alt="Oils" class="mb-3 mx-auto rounded-xl h-28 w-auto object-contain">
+        <p class="font-semibold text-lg text-green-900">Oils</p>
       </div>
-      <div class="bg-white rounded-xl shadow p-4 text-center hover:shadow-lg transition zoom-hover">
-        <img src="images/dryfruits.png" alt="Dry Fruits" class="mb-2 mx-auto rounded h-28 w-auto object-contain">
-        <p class="font-semibold" data-lang-en>Dry Fruits</p>
-        <p class="font-semibold hidden" data-lang-hi>मेवे</p>
+      <div class="bg-white rounded-2xl shadow-xl p-4 text-center transform hover:scale-105 hover:shadow-2xl transition duration-300 zoom-hover">
+        <img src="images/dryfruits.png" alt="Dry Fruits" class="mb-3 mx-auto rounded-xl h-28 w-auto object-contain">
+        <p class="font-semibold text-lg text-green-900">Dry Fruits</p>
       </div>
-      <div class="bg-white rounded-xl shadow p-4 text-center hover:shadow-lg transition zoom-hover">
-        <img src="images/sweets.png" alt="Sweets" class="mb-2 mx-auto rounded h-28 w-auto object-contain">
-        <p class="font-semibold" data-lang-en>Sweets</p>
-        <p class="font-semibold hidden" data-lang-hi>मिठाई</p>
+      <div class="bg-white rounded-2xl shadow-xl p-4 text-center transform hover:scale-105 hover:shadow-2xl transition duration-300 zoom-hover">
+        <img src="images/sweets.png" alt="Sweets" class="mb-3 mx-auto rounded-xl h-28 w-auto object-contain">
+        <p class="font-semibold text-lg text-green-900">Sweets</p>
       </div>
-      <div class="bg-white rounded-xl shadow p-4 text-center hover:shadow-lg transition zoom-hover">
-        <img src="images/nuts.png" alt="Nuts" class="mb-2 mx-auto rounded h-28 w-auto object-contain">
-        <p class="font-semibold" data-lang-en>Nuts</p>
-        <p class="font-semibold hidden" data-lang-hi>नट्स</p>
+      <div class="bg-white rounded-2xl shadow-xl p-4 text-center transform hover:scale-105 hover:shadow-2xl transition duration-300 zoom-hover">
+        <img src="images/nuts.png" alt="Nuts" class="mb-3 mx-auto rounded-xl h-28 w-auto object-contain">
+        <p class="font-semibold text-lg text-green-900">Nuts</p>
       </div>
     </div>
   </section>
 
   <!-- Timeline -->
   <section class="bg-white py-12 px-6">
-    <h3 class="text-3xl font-bold text-center mb-8" data-lang-en>Our Journey: Farm to Doorstep</h3>
-    <h3 class="text-3xl font-bold text-center mb-8 hidden" data-lang-hi>हमारी यात्रा: खेत से घर तक</h3>
+    <h3 class="text-3xl font-bold text-center mb-8">Our Journey: Farm to Doorstep</h3>
     <div class="flex flex-col sm:flex-row justify-center items-center gap-6 max-w-4xl mx-auto">
       <div class="text-center">
         <div class="text-4xl">🌾</div>
-        <p class="font-semibold" data-lang-en>Farm Harvest</p>
-        <p class="font-semibold hidden" data-lang-hi>खेत की फसल</p>
+        <p class="font-semibold">Farm Harvest</p>
       </div>
       <div class="text-4xl">➡️</div>
       <div class="text-center">
         <div class="text-4xl">🏭</div>
-        <p class="font-semibold" data-lang-en>Traditional Processing</p>
-        <p class="font-semibold hidden" data-lang-hi>परंपरागत प्रसंस्करण</p>
+        <p class="font-semibold">Traditional Processing</p>
       </div>
       <div class="text-4xl">➡️</div>
       <div class="text-center">
         <div class="text-4xl">📦</div>
-        <p class="font-semibold" data-lang-en>Hand Packaging</p>
-        <p class="font-semibold hidden" data-lang-hi>हाथ से पैकिंग</p>
+        <p class="font-semibold">Hand Packaging</p>
       </div>
       <div class="text-4xl">➡️</div>
       <div class="text-center">
         <div class="text-4xl">🚚</div>
-        <p class="font-semibold" data-lang-en>Door Delivery</p>
-        <p class="font-semibold hidden" data-lang-hi>दरवाज़े तक डिलीवरी</p>
+        <p class="font-semibold">Door Delivery</p>
       </div>
     </div>
   </section>
 
   <!-- Contact -->
   <section class="py-10 bg-lime-100 text-center">
-    <h3 class="text-2xl font-bold mb-2" data-lang-en>Contact Us</h3>
-    <h3 class="text-2xl font-bold mb-2 hidden" data-lang-hi>संपर्क करें</h3>
+    <h3 class="text-2xl font-bold mb-2">Contact Us</h3>
     <p>Email: <a href="mailto:vatsalyaorganik@gmail.com" class="text-green-800 underline hover:text-green-600">vatsalyaorganik@gmail.com</a></p>
     <p>Phone: <a href="tel:+917500993392" class="text-green-800 underline hover:text-green-600">+91-7500993392</a></p>
+    <a href="https://wa.me/917500993392" class="mt-4 inline-block bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700">Chat on WhatsApp</a>
   </section>
 
   <!-- Floating Action Bar -->
   <div class="fixed bottom-0 left-0 right-0 flex justify-around bg-white border-t py-2 shadow-inner text-green-900 sm:hidden">
-    <a href="#" class="text-center text-sm">🏠<br><span data-lang-en>Home</span><span class="hidden" data-lang-hi>होम</span></a>
-    <a href="tel:+917500993392" class="text-center text-sm">📞<br><span data-lang-en>Call</span><span class="hidden" data-lang-hi>कॉल</span></a>
-    <a href="#" class="text-center text-sm">🛒<br><span data-lang-en>Products</span><span class="hidden" data-lang-hi>उत्पाद</span></a>
-    <a href="https://wa.me/917500993392" class="text-center text-sm">💬<br><span data-lang-en>Chat</span><span class="hidden" data-lang-hi>चैट</span></a>
+    <a href="#" class="text-center text-sm">🏠<br>Home</a>
+    <a href="tel:+917500993392" class="text-center text-sm">📞<br>Call</a>
+    <a href="#products" class="text-center text-sm">🛒<br>Products</a>
+    <a href="https://wa.me/917500993392" class="text-center text-sm">💬<br>Chat</a>
   </div>
 
   <!-- Footer -->
@@ -189,17 +163,15 @@
 
   <!-- Scripts -->
   <script>
-    function toggleDarkMode() {
-      document.getElementById("mainBody").classList.toggle("dark");
-    }
+    window.addEventListener('load', () => {
+      document.getElementById('preloader').style.display = 'none';
+    });
+
     function toggleLang() {
       document.querySelectorAll('[data-lang-en]').forEach(el => el.classList.toggle('hidden'));
       document.querySelectorAll('[data-lang-hi]').forEach(el => el.classList.toggle('hidden'));
     }
-    window.addEventListener('load', () => {
-      document.getElementById('preloader').style.display = 'none';
-    });
   </script>
 
 </body>
-</html>
+</html> this is the whole code add everything in it like i said
