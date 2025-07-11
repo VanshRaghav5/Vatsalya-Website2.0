@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Vatsalya Organik</title>
-  <meta name="description" content="Vatsalya Organik – Purity and wellness in every bite. Explore our wide range of spices, pulses, dry fruits, oils, and more delivered to your doorstep." />
-  <meta name="keywords" content="Vatsalya Organik, natural products, spices, pulses, dry fruits, cereals, oils, sweets, millets, nuts" />
+  <meta name="description" content="Vatsalya Organik – Purity and wellness in every bite." />
+  <meta name="keywords" content="Vatsalya Organik, organic products, traditional food, farm to home, spices, pulses" />
   <meta name="author" content="Vatsalya Organik" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     html {
@@ -15,17 +15,36 @@
     }
     body {
       font-family: 'Poppins', sans-serif;
+      background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
     }
     .animate-fade-in { animation: fadeIn 1s ease-out forwards; opacity: 0; }
     .animate-slide-in { animation: slideIn 1s ease-out forwards; opacity: 0; }
     @keyframes fadeIn { to { opacity: 1; } }
     @keyframes slideIn { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+    .zoom-hover:hover { transform: scale(1.1); transition: transform 0.3s ease; }
+    .dark body { background-color: #111827; color: #f9fafb; }
   </style>
 </head>
 <body class="bg-lime-50 text-green-900">
 
+  <!-- Preloader -->
+  <div id="preloader" class="fixed inset-0 bg-white flex items-center justify-center z-50">
+    <img src="images/logo.png" alt="Logo" class="w-16 animate-pulse">
+  </div>
+
+  <!-- Audio Welcome -->
+  <audio autoplay hidden>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mp3">
+  </audio>
+
+  <!-- Dark Mode & Language Switcher -->
+  <div class="fixed top-4 right-4 flex gap-3 z-50">
+    <button onclick="document.body.classList.toggle('dark')" class="bg-gray-800 text-white px-2 py-1 rounded">🌙</button>
+    <button onclick="toggleLang()" class="bg-green-700 text-white px-2 py-1 rounded">🇮🇳 हिंदी</button>
+  </div>
+
   <!-- Header -->
-  <header class="bg-white shadow p-4 flex justify-between items-center sticky top-0 z-50">
+  <header class="bg-white shadow p-4 flex justify-between items-center sticky top-0 z-40">
     <div class="flex items-center gap-3">
       <img src="images/logo.png" alt="Logo" class="rounded-full w-12 h-12 object-cover">
       <h1 class="text-xl font-bold">Vatsalya Organik</h1>
@@ -33,49 +52,90 @@
     <a href="https://wa.me/917500993392" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition">WhatsApp</a>
   </header>
 
+  <!-- Seasonal Banner -->
+  <div class="bg-yellow-300 text-center py-2 font-semibold">🎉 Festive Offer: 10% Off on Combo Packs – Limited Time!</div>
+
   <!-- Hero -->
-  <section class="text-center py-20 bg-gradient-to-br from-lime-100 to-yellow-100 px-4">
-    <h2 class="text-4xl sm:text-5xl font-bold mb-4 animate-fade-in">Remembering Tradition with Every Bite</h2>
-    <p class="text-lg max-w-2xl mx-auto text-gray-700 animate-slide-in">
+  <section class="text-center py-20 bg-gradient-to-br from-lime-100 to-yellow-100 px-4 bg-fixed">
+    <h2 class="text-4xl sm:text-5xl font-bold mb-4 animate-fade-in" data-lang-en>Remembering Tradition with Every Bite</h2>
+    <h2 class="text-4xl sm:text-5xl font-bold mb-4 hidden animate-fade-in" data-lang-hi>हर निवाले में परंपरा की मिठास</h2>
+    <p class="text-lg max-w-2xl mx-auto text-gray-700 animate-slide-in" data-lang-en>
       At Vatsalya Organik, we bring wellness from nature to your home. Every product is crafted with care, quality, and tradition.
     </p>
+    <p class="text-lg max-w-2xl mx-auto text-gray-700 hidden animate-slide-in" data-lang-hi>
+      वत्सल्य औरगनिक आपके घर तक प्रकृति की ताजगी और सेहत पहुंचाता है। हर उत्पाद परंपरा और शुद्धता का प्रतीक है।
+    </p>
+  </section>
+
+  <!-- Trust Badges -->
+  <section class="flex justify-center flex-wrap gap-4 py-4">
+    <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-semibold">✅ Farm Fresh</span>
+    <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-semibold">🌿 No Chemicals</span>
+    <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-semibold">🔍 Hand Inspected</span>
+    <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-semibold">📦 Eco Packaging</span>
   </section>
 
   <!-- Products -->
   <section class="py-12 px-6">
     <h3 class="text-3xl font-semibold text-center mb-10">Our Products</h3>
     <div class="grid gap-6 grid-cols-2 sm:grid-cols-3 md:grid-cols-4">
-      <div class="bg-white rounded-2xl shadow-xl p-4 text-center transform hover:scale-105 hover:shadow-2xl transition duration-300">
+      <div class="bg-white rounded-2xl shadow-xl p-4 text-center transform hover:scale-105 hover:shadow-2xl transition duration-300 zoom-hover">
         <img src="images/spices.png" alt="Spices" class="mb-3 mx-auto rounded-xl h-28 w-auto object-contain">
         <p class="font-semibold text-lg text-green-900">Spices</p>
       </div>
-      <div class="bg-white rounded-2xl shadow-xl p-4 text-center transform hover:scale-105 hover:shadow-2xl transition duration-300">
+      <div class="bg-white rounded-2xl shadow-xl p-4 text-center transform hover:scale-105 hover:shadow-2xl transition duration-300 zoom-hover">
         <img src="images/pulses.png" alt="Pulses" class="mb-3 mx-auto rounded-xl h-28 w-auto object-contain">
         <p class="font-semibold text-lg text-green-900">Pulses</p>
       </div>
-      <div class="bg-white rounded-2xl shadow-xl p-4 text-center transform hover:scale-105 hover:shadow-2xl transition duration-300">
+      <div class="bg-white rounded-2xl shadow-xl p-4 text-center transform hover:scale-105 hover:shadow-2xl transition duration-300 zoom-hover">
         <img src="images/cereals.png" alt="Cereals" class="mb-3 mx-auto rounded-xl h-28 w-auto object-contain">
         <p class="font-semibold text-lg text-green-900">Cereals</p>
       </div>
-      <div class="bg-white rounded-2xl shadow-xl p-4 text-center transform hover:scale-105 hover:shadow-2xl transition duration-300">
+      <div class="bg-white rounded-2xl shadow-xl p-4 text-center transform hover:scale-105 hover:shadow-2xl transition duration-300 zoom-hover">
         <img src="images/millets.png" alt="Millets" class="mb-3 mx-auto rounded-xl h-28 w-auto object-contain">
         <p class="font-semibold text-lg text-green-900">Millets</p>
       </div>
-      <div class="bg-white rounded-2xl shadow-xl p-4 text-center transform hover:scale-105 hover:shadow-2xl transition duration-300">
+      <div class="bg-white rounded-2xl shadow-xl p-4 text-center transform hover:scale-105 hover:shadow-2xl transition duration-300 zoom-hover">
         <img src="images/oils.png" alt="Oils" class="mb-3 mx-auto rounded-xl h-28 w-auto object-contain">
         <p class="font-semibold text-lg text-green-900">Oils</p>
       </div>
-      <div class="bg-white rounded-2xl shadow-xl p-4 text-center transform hover:scale-105 hover:shadow-2xl transition duration-300">
+      <div class="bg-white rounded-2xl shadow-xl p-4 text-center transform hover:scale-105 hover:shadow-2xl transition duration-300 zoom-hover">
         <img src="images/dryfruits.png" alt="Dry Fruits" class="mb-3 mx-auto rounded-xl h-28 w-auto object-contain">
         <p class="font-semibold text-lg text-green-900">Dry Fruits</p>
       </div>
-      <div class="bg-white rounded-2xl shadow-xl p-4 text-center transform hover:scale-105 hover:shadow-2xl transition duration-300">
+      <div class="bg-white rounded-2xl shadow-xl p-4 text-center transform hover:scale-105 hover:shadow-2xl transition duration-300 zoom-hover">
         <img src="images/sweets.png" alt="Sweets" class="mb-3 mx-auto rounded-xl h-28 w-auto object-contain">
         <p class="font-semibold text-lg text-green-900">Sweets</p>
       </div>
-      <div class="bg-white rounded-2xl shadow-xl p-4 text-center transform hover:scale-105 hover:shadow-2xl transition duration-300">
+      <div class="bg-white rounded-2xl shadow-xl p-4 text-center transform hover:scale-105 hover:shadow-2xl transition duration-300 zoom-hover">
         <img src="images/nuts.png" alt="Nuts" class="mb-3 mx-auto rounded-xl h-28 w-auto object-contain">
         <p class="font-semibold text-lg text-green-900">Nuts</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline -->
+  <section class="bg-white py-12 px-6">
+    <h3 class="text-3xl font-bold text-center mb-8">Our Journey: Farm to Doorstep</h3>
+    <div class="flex flex-col sm:flex-row justify-center items-center gap-6 max-w-4xl mx-auto">
+      <div class="text-center">
+        <div class="text-4xl">🌾</div>
+        <p class="font-semibold">Farm Harvest</p>
+      </div>
+      <div class="text-4xl">➡️</div>
+      <div class="text-center">
+        <div class="text-4xl">🏭</div>
+        <p class="font-semibold">Traditional Processing</p>
+      </div>
+      <div class="text-4xl">➡️</div>
+      <div class="text-center">
+        <div class="text-4xl">📦</div>
+        <p class="font-semibold">Hand Packaging</p>
+      </div>
+      <div class="text-4xl">➡️</div>
+      <div class="text-center">
+        <div class="text-4xl">🚚</div>
+        <p class="font-semibold">Door Delivery</p>
       </div>
     </div>
   </section>
@@ -88,16 +148,30 @@
     <a href="https://wa.me/917500993392" class="mt-4 inline-block bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700">Chat on WhatsApp</a>
   </section>
 
-  <!-- Floating WhatsApp Button -->
-  <a href="https://wa.me/917500993392" target="_blank"
-     class="fixed bottom-6 right-6 bg-green-600 hover:bg-green-700 text-white p-4 rounded-full shadow-lg z-50 transition-all">
-    <img src="https://img.icons8.com/ios-filled/50/ffffff/whatsapp.png" class="w-6 h-6" alt="Chat on WhatsApp">
-  </a>
+  <!-- Floating Action Bar -->
+  <div class="fixed bottom-0 left-0 right-0 flex justify-around bg-white border-t py-2 shadow-inner text-green-900 sm:hidden">
+    <a href="#" class="text-center text-sm">🏠<br>Home</a>
+    <a href="tel:+917500993392" class="text-center text-sm">📞<br>Call</a>
+    <a href="#products" class="text-center text-sm">🛒<br>Products</a>
+    <a href="https://wa.me/917500993392" class="text-center text-sm">💬<br>Chat</a>
+  </div>
 
   <!-- Footer -->
   <footer class="text-center py-6 text-sm text-green-800 bg-white">
     &copy; 2025 Vatsalya Organik. All rights reserved.
   </footer>
+
+  <!-- Scripts -->
+  <script>
+    window.addEventListener('load', () => {
+      document.getElementById('preloader').style.display = 'none';
+    });
+
+    function toggleLang() {
+      document.querySelectorAll('[data-lang-en]').forEach(el => el.classList.toggle('hidden'));
+      document.querySelectorAll('[data-lang-hi]').forEach(el => el.classList.toggle('hidden'));
+    }
+  </script>
 
 </body>
 </html>
