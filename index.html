@@ -7,14 +7,19 @@
   <meta name="description" content="Vatsalya Organik – Purity and wellness in every bite. Explore our wide range of spices, pulses, dry fruits, oils, and more delivered to your doorstep." />
   <meta name="keywords" content="Vatsalya Organik, natural products, spices, pulses, dry fruits, cereals, oils, sweets, millets, nuts" />
   <meta name="author" content="Vatsalya Organik" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     html {
       scroll-behavior: smooth;
     }
     body {
-      font-family: sans-serif;
+      font-family: 'Poppins', sans-serif;
     }
+    .animate-fade-in { animation: fadeIn 1s ease-out forwards; opacity: 0; }
+    .animate-slide-in { animation: slideIn 1s ease-out forwards; opacity: 0; }
+    @keyframes fadeIn { to { opacity: 1; } }
+    @keyframes slideIn { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
   </style>
 </head>
 <body class="bg-lime-50 text-green-900">
@@ -29,58 +34,65 @@
   </header>
 
   <!-- Hero -->
-  <section class="text-center py-16 bg-gradient-to-br from-lime-100 to-yellow-100 px-4">
-    <h2 class="text-4xl font-bold mb-4">Remembering Tradition with Every Bite</h2>
-    <p class="text-lg max-w-xl mx-auto">At Vatsalya Organik, we are committed to delivering purity and wellness straight from the heart of nature to your doorstep. Every product is a celebration of tradition, health, and care.</p>
+  <section class="text-center py-20 bg-gradient-to-br from-lime-100 to-yellow-100 px-4">
+    <h2 class="text-4xl sm:text-5xl font-bold mb-4 animate-fade-in">Remembering Tradition with Every Bite</h2>
+    <p class="text-lg max-w-2xl mx-auto text-gray-700 animate-slide-in">
+      At Vatsalya Organik, we bring wellness from nature to your home. Every product is crafted with care, quality, and tradition.
+    </p>
   </section>
 
   <!-- Products -->
   <section class="py-12 px-6">
     <h3 class="text-3xl font-semibold text-center mb-10">Our Products</h3>
     <div class="grid gap-6 grid-cols-2 sm:grid-cols-3 md:grid-cols-4">
-      <div class="bg-white rounded-xl shadow p-4 text-center hover:shadow-lg transition">
-        <img src="images/spices.png" alt="Spices" class="mb-2 mx-auto rounded h-28 w-auto object-contain">
-        <p class="font-semibold">Spices</p>
+      <div class="bg-white rounded-2xl shadow-xl p-4 text-center transform hover:scale-105 hover:shadow-2xl transition duration-300">
+        <img src="images/spices.png" alt="Spices" class="mb-3 mx-auto rounded-xl h-28 w-auto object-contain">
+        <p class="font-semibold text-lg text-green-900">Spices</p>
       </div>
-      <div class="bg-white rounded-xl shadow p-4 text-center hover:shadow-lg transition">
-        <img src="images/pulses.png" alt="Pulses" class="mb-2 mx-auto rounded h-28 w-auto object-contain">
-        <p class="font-semibold">Pulses</p>
+      <div class="bg-white rounded-2xl shadow-xl p-4 text-center transform hover:scale-105 hover:shadow-2xl transition duration-300">
+        <img src="images/pulses.png" alt="Pulses" class="mb-3 mx-auto rounded-xl h-28 w-auto object-contain">
+        <p class="font-semibold text-lg text-green-900">Pulses</p>
       </div>
-      <div class="bg-white rounded-xl shadow p-4 text-center hover:shadow-lg transition">
-        <img src="images/cereals.png" alt="Cereals" class="mb-2 mx-auto rounded h-28 w-auto object-contain">
-        <p class="font-semibold">Cereals</p>
+      <div class="bg-white rounded-2xl shadow-xl p-4 text-center transform hover:scale-105 hover:shadow-2xl transition duration-300">
+        <img src="images/cereals.png" alt="Cereals" class="mb-3 mx-auto rounded-xl h-28 w-auto object-contain">
+        <p class="font-semibold text-lg text-green-900">Cereals</p>
       </div>
-      <div class="bg-white rounded-xl shadow p-4 text-center hover:shadow-lg transition">
-        <img src="images/millets.png" alt="Millets" class="mb-2 mx-auto rounded h-28 w-auto object-contain">
-        <p class="font-semibold">Millets</p>
+      <div class="bg-white rounded-2xl shadow-xl p-4 text-center transform hover:scale-105 hover:shadow-2xl transition duration-300">
+        <img src="images/millets.png" alt="Millets" class="mb-3 mx-auto rounded-xl h-28 w-auto object-contain">
+        <p class="font-semibold text-lg text-green-900">Millets</p>
       </div>
-      <div class="bg-white rounded-xl shadow p-4 text-center hover:shadow-lg transition">
-        <img src="images/oils.png" alt="Oils" class="mb-2 mx-auto rounded h-28 w-auto object-contain">
-        <p class="font-semibold">Oils</p>
+      <div class="bg-white rounded-2xl shadow-xl p-4 text-center transform hover:scale-105 hover:shadow-2xl transition duration-300">
+        <img src="images/oils.png" alt="Oils" class="mb-3 mx-auto rounded-xl h-28 w-auto object-contain">
+        <p class="font-semibold text-lg text-green-900">Oils</p>
       </div>
-      <div class="bg-white rounded-xl shadow p-4 text-center hover:shadow-lg transition">
-        <img src="images/dryfruits.png" alt="Dry Fruits" class="mb-2 mx-auto rounded h-28 w-auto object-contain">
-        <p class="font-semibold">Dry Fruits</p>
+      <div class="bg-white rounded-2xl shadow-xl p-4 text-center transform hover:scale-105 hover:shadow-2xl transition duration-300">
+        <img src="images/dryfruits.png" alt="Dry Fruits" class="mb-3 mx-auto rounded-xl h-28 w-auto object-contain">
+        <p class="font-semibold text-lg text-green-900">Dry Fruits</p>
       </div>
-      <div class="bg-white rounded-xl shadow p-4 text-center hover:shadow-lg transition">
-        <img src="images/sweets.png" alt="Sweets" class="mb-2 mx-auto rounded h-28 w-auto object-contain">
-        <p class="font-semibold">Sweets</p>
+      <div class="bg-white rounded-2xl shadow-xl p-4 text-center transform hover:scale-105 hover:shadow-2xl transition duration-300">
+        <img src="images/sweets.png" alt="Sweets" class="mb-3 mx-auto rounded-xl h-28 w-auto object-contain">
+        <p class="font-semibold text-lg text-green-900">Sweets</p>
       </div>
-      <div class="bg-white rounded-xl shadow p-4 text-center hover:shadow-lg transition">
-        <img src="images/nuts.png" alt="Nuts" class="mb-2 mx-auto rounded h-28 w-auto object-contain">
-        <p class="font-semibold">Nuts</p>
+      <div class="bg-white rounded-2xl shadow-xl p-4 text-center transform hover:scale-105 hover:shadow-2xl transition duration-300">
+        <img src="images/nuts.png" alt="Nuts" class="mb-3 mx-auto rounded-xl h-28 w-auto object-contain">
+        <p class="font-semibold text-lg text-green-900">Nuts</p>
       </div>
     </div>
   </section>
 
- <!-- Contact -->
-<section class="py-10 bg-lime-100 text-center">
-  <h3 class="text-2xl font-bold mb-2">Contact Us</h3>
-  <p>Email: <a href="mailto:vatsalyaorganik@gmail.com" class="text-green-800 underline hover:text-green-600">vatsalyaorganik@gmail.com</a></p>
-  <p>Phone: <a href="tel:+917500993392" class="text-green-800 underline hover:text-green-600">+91-7500993392</a></p>
-  <a href="https://wa.me/917500993392" class="mt-4 inline-block bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700">Chat on WhatsApp</a>
-</section>
+  <!-- Contact -->
+  <section class="py-10 bg-lime-100 text-center">
+    <h3 class="text-2xl font-bold mb-2">Contact Us</h3>
+    <p>Email: <a href="mailto:vatsalyaorganik@gmail.com" class="text-green-800 underline hover:text-green-600">vatsalyaorganik@gmail.com</a></p>
+    <p>Phone: <a href="tel:+917500993392" class="text-green-800 underline hover:text-green-600">+91-7500993392</a></p>
+    <a href="https://wa.me/917500993392" class="mt-4 inline-block bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700">Chat on WhatsApp</a>
+  </section>
 
+  <!-- Floating WhatsApp Button -->
+  <a href="https://wa.me/917500993392" target="_blank"
+     class="fixed bottom-6 right-6 bg-green-600 hover:bg-green-700 text-white p-4 rounded-full shadow-lg z-50 transition-all">
+    <img src="https://img.icons8.com/ios-filled/50/ffffff/whatsapp.png" class="w-6 h-6" alt="Chat on WhatsApp">
+  </a>
 
   <!-- Footer -->
   <footer class="text-center py-6 text-sm text-green-800 bg-white">
