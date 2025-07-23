@@ -15,50 +15,56 @@ fetch('products.json')
 
     const grid = document.getElementById('cat-grid');
 
+    const categoryImageMap = {
+      "Dry Fruits": "dryfruits",
+      "Pulses": "pulses",
+      "Cereals": "cereals",
+      "Millets": "millets",
+      "Spices": "spices",
+      "Oils": "oils",
+      "Sweets": "sweets",
+      "Nuts": "nuts"
+    };
+
+    function getCategoryImage(category) {
+      const baseName = categoryImageMap[category] || category.toLowerCase().replace(/\s+|&/g, '_');
+      const extensions = ['.jpg', '.png'];
+      for (let ext of extensions) {
+        const path = `images/${baseName}${ext}`;
+        const img = new Image();
+        img.src = path;
+        if (img.complete || img.naturalWidth !== 0) {
+          return path;
+        }
+      }
+      return 'images/placeholder-category.png';
+    }
+
     Object.keys(categories).forEach(category => {
-      // Create category box
       const catBox = document.createElement('div');
       catBox.className =
         'bg-white rounded-2xl shadow-xl p-4 text-center zoom-hover cursor-pointer flex flex-col items-center transition';
-      // Use category image if available, else show placeholder-category.png
-     const categoryImageMap = {
-  "Dry Fruits": "dryfruits",
-  "Pulses": "pulses",
-  "Cereals": "cereals",
-  "Millets": "millets",
-  "Spices": "spices",
-  "Oils": "oils",
-  "Sweets": "sweets",
-  "Nuts": "nuts"
-};
 
-function getCategoryImage(category) {
-  const baseName = categoryImageMap[category] || category.toLowerCase().replace(/\s+|&/g, '_');
-  const extensions = ['.jpg', '.png'];
+      const img = document.createElement('img');
+      img.src = getCategoryImage(category);
+      img.alt = category;
+      img.className = 'mb-3 mx-auto rounded-xl h-20 w-20 object-contain bg-lime-50';
+      img.onerror = function () {
+        this.src = 'images/placeholder-category.png';
+      };
 
-  for (let ext of extensions) {
-    const path = `images/${baseName}${ext}`;
-    const img = new Image();
-    img.src = path;
-    if (img.complete || img.naturalWidth !== 0) return path;
-  }
+      const label = document.createElement('p');
+      label.textContent = category;
+      label.className = 'font-semibold text-lg text-green-900';
 
-  return 'images/placeholder-category.png';
-}
+      catBox.appendChild(img);
+      catBox.appendChild(label);
 
-const catImageName = categoryImageMap[category] || 'placeholder-category.png';
-
-      catBox.innerHTML = `
-        <img src="images/${catImageName}" alt="${category}" class="mb-3 mx-auto rounded-xl h-20 w-20 object-contain bg-lime-50" onerror="this.src='images/placeholder-category.png'">
-        <p class="font-semibold text-lg text-green-900">${category}</p>
-      `;
-
-      // Create product list, hidden by default
       const productList = document.createElement('div');
       productList.className = 'hidden mt-4 w-full';
       categories[category].forEach(productItem => {
         const prodCard = document.createElement('div');
-        prodCard.className = 'flex flex-col items-center mb-4'; // Style as needed
+        prodCard.className = 'flex flex-col items-center mb-4';
         prodCard.innerHTML = `
           <img src="images/${productItem.image || 'placeholder-product.png'}"
                alt="${productItem.product}"
@@ -68,12 +74,10 @@ const catImageName = categoryImageMap[category] || 'placeholder-category.png';
         productList.appendChild(prodCard);
       });
 
-      // Toggle visibility of product list on click
       catBox.onclick = () => {
         productList.classList.toggle('hidden');
       };
 
-      // Wrap for flex stack
       const wrapper = document.createElement('div');
       wrapper.appendChild(catBox);
       wrapper.appendChild(productList);
