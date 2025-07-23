@@ -15,63 +15,16 @@ fetch('products.json')
 
     const grid = document.getElementById('cat-grid');
 
-   const categories = [
-  "Spices",
-  "Pulses",
-  "Dry Fruits",
-  "Cereals",
-  "Millets",
-  "Flours Daliya",
-  "Oil and Oil Seeds",
-  "Sweetners",
-  "Nuts",
-  "Rice",
-  "Natural Salts"
-];
-
-const container = document.getElementById("category-container");
-
-// Function to format category name to match image filenames
-function formatCategoryName(category) {
-  return category.toLowerCase().replace(/ /g, "_");
-}
-
-// Dynamically load image with fallback to .jpg then .png then placeholder
-function loadCategoryImage(category, imgElement) {
-  const baseName = formatCategoryName(category);
-  const jpgPath = `images/${baseName}.jpg`;
-  const pngPath = `images/${baseName}.png`;
-  const placeholder = "images/placeholder-category.png";
-
-  const testImg = new Image();
-  testImg.onload = () => imgElement.src = jpgPath;
-  testImg.onerror = () => {
-    const fallbackImg = new Image();
-    fallbackImg.onload = () => imgElement.src = pngPath;
-    fallbackImg.onerror = () => imgElement.src = placeholder;
-    fallbackImg.src = pngPath;
-  };
-  testImg.src = jpgPath;
-}
-
-// Render category cards
-categories.forEach(category => {
-  const card = document.createElement("div");
-  card.className = "category-card";
-
-  const img = document.createElement("img");
-  img.alt = category;
-  img.src = "images/placeholder-category.png"; // Default placeholder while loading
-
-  loadCategoryImage(category, img); // Try to load real image
-
-  const title = document.createElement("h3");
-  title.textContent = category;
-
-  card.appendChild(img);
-  card.appendChild(title);
-  container.appendChild(card);
-});
+    const categoryImageMap = {
+      "Dry Fruits": "dry_fruits.jpg",
+      "Pulses": "pulses.png",
+      "Cereals": "cereals.png",
+      "Millets": "millets.png",
+      "Spices": "spices.png",
+      "Oils": "oils.png",
+      "Sweets": "sweets.png",
+      "Nuts": "nuts.png"
+    };
 
     Object.keys(categories).forEach(category => {
       const categoryImg = categoryImageMap[category] || 'placeholder-category.png';
