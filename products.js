@@ -16,15 +16,22 @@ fetch('products.json')
     const grid = document.getElementById('cat-grid');
 
     const categoryImageMap = {
-      "Dry Fruits": "dry_fruits.jpg",
-      "Pulses": "pulses.png",
-      "Cereals": "cereals.png",
-      "Millets": "millets.png",
-      "Spices": "spices.png",
-      "Oils": "oils.png",
-      "Sweets": "sweets.png",
-      "Nuts": "nuts.png"
-    };
+  "Dry Fruits": "dry_fruits.jpg",
+  "Pulses": "pulses.png",
+  "Cereals": "cereals.png",
+  "Millets": "millets.png",
+  "Spices": "spices.png",
+  "Oils": "oils.png",
+  "Sweets": "sweets.png",
+  "Nuts": "nuts.png",
+  "Flour": "flour.png",
+  "Daliya": "daliya.png",
+  "Oil and Oil Seeds": "oil_and_oil_seeds.png",
+  "Sweeteners": "sweeteners.png",
+  "Rice": "rice.png",
+  "Natural Salts": "natural_salts.png"
+};
+
 
     Object.keys(categories).forEach(category => {
       const categoryImg = categoryImageMap[category] || 'placeholder-category.png';
