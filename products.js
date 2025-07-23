@@ -21,7 +21,21 @@ fetch('products.json')
       catBox.className =
         'bg-white rounded-2xl shadow-xl p-4 text-center zoom-hover cursor-pointer flex flex-col items-center transition';
       // Use category image if available, else show placeholder-category.png
-      const catImageName = category.toLowerCase().replace(/\s+|&/g, '_').replace(/[^a-z0-9_]/g, '') + '.png';
+      const categoryImageMap = {
+  "Spices": "spices.png",
+  "Pulses": "pulses.png",
+  "Flours & Daliya": "flours_daliya.png",
+  "Oils And oil seeds": "oil_and_oil_seeds.png",
+  "Dry Fruits": "dryfruits.png",
+  "Millets": "millets.png",
+  "Sweetners": "sweetners.png",
+  "Rice": "rice.png",
+  "Cereals": "cereals.png",
+  "Nuts": "nuts.png",
+  "Natural Salts": "salts.png"
+};
+const catImageName = categoryImageMap[category] || 'placeholder-category.png';
+
       catBox.innerHTML = `
         <img src="images/${catImageName}" alt="${category}" class="mb-3 mx-auto rounded-xl h-20 w-20 object-contain bg-lime-50" onerror="this.src='images/placeholder-category.png'">
         <p class="font-semibold text-lg text-green-900">${category}</p>
